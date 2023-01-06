@@ -23,7 +23,7 @@ public class TileManager {
 
     private Tile readTile(String path, boolean collision) throws IOException{
         Tile tile = new Tile();
-        tile.image = ImageIO.read(new FileInputStream(new File(path)));
+        tile.image = ImageIO.read(new FileInputStream(path));
         tile.collision = collision;
         return tile;
     }
