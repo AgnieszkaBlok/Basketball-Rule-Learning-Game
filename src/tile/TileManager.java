@@ -4,10 +4,7 @@ import Main.GamePanel;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 
 public class TileManager {
 
@@ -21,7 +18,7 @@ public class TileManager {
         tile = new Tile[10];//liczba naszych rodzajow bloczkow
         mapTileNum = new int[gp.maxWorldCol][gp.maxWorldRow];
         getTileImage();
-        loadMap("/maps/world01.txt");
+        loadMap("res/maps/world01.txt");
     }
     public void getTileImage(){
 
@@ -57,8 +54,8 @@ public class TileManager {
     public void loadMap(String filePath){
 
         try{
-            InputStream is = getClass().getResourceAsStream(filePath);
-            BufferedReader br = new BufferedReader(new InputStreamReader(is));
+            FileReader fileReader = new FileReader(filePath);
+            BufferedReader br = new BufferedReader(fileReader);
             int col = 0;
             int row = 0;
 
@@ -67,7 +64,7 @@ public class TileManager {
                 String line = br.readLine();//czyta linie tekstu, tylko string przyjmuje
 
                 while(col < gp.maxWorldCol){
-                    String numbers[] = line.split(" ") ;//podzial wyrazu stringa wokol dopasowan wyrazu
+                    String[] numbers = line.split(" ") ;//podzial wyrazu stringa wokol dopasowan wyrazu
                     int num = Integer.parseInt(numbers[col]);
 
                     mapTileNum[col][row] = num;
@@ -81,8 +78,10 @@ public class TileManager {
                 }
             }
             br.close();
-        }catch (Exception e){
-
+        }catch (FileNotFoundException e) {
+            System.out.println("Couldn't read map from " + filePath);
+        } catch (IOException e) {
+            System.out.println("Other IOException while reading map!");
         }
 
     }
