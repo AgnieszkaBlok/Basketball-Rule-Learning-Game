@@ -4,6 +4,7 @@ import Main.GamePanel;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.*;
 
 public class TileManager {
@@ -20,35 +21,25 @@ public class TileManager {
         getTileImage();
         loadMap("res/maps/world01.txt");
     }
+
+    private Tile readTile(String path, boolean collision) throws IOException{
+        Tile tile = new Tile();
+        tile.image = ImageIO.read(getClass().getResourceAsStream(path));
+        tile.collision = collision;
+        return tile;
+    }
+
     public void getTileImage(){
-
         try{
-            tile[0] = new Tile();
-            tile[0].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grass.png"));
-
-            tile[1] = new Tile();
-            tile[1].image = ImageIO.read(getClass().getResourceAsStream("/tiles/wall.png"));
-            tile[1].collision = true;
-
-            tile[2] = new Tile();
-            tile[2].image = ImageIO.read(getClass().getResourceAsStream("/tiles/water.png"));
-            tile[2].collision = true;
-
-            tile[3] = new Tile();
-            tile[3].image = ImageIO.read(getClass().getResourceAsStream("/tiles/earth.png"));
-
-            tile[4] = new Tile();
-            tile[4].image = ImageIO.read(getClass().getResourceAsStream("/tiles/tree.png"));
-            tile[4].collision = true;
-
-            tile[5] = new Tile();
-            tile[5].image = ImageIO.read(getClass().getResourceAsStream("/tiles/sand.png"));
-
-
+            tile[0] = readTile("/tiles/grass.png", false);
+            tile[1] = readTile("/tiles/wall.png", true);
+            tile[2] = readTile("/tiles/water.png", true);
+            tile[3] = readTile("/tiles/earth.png", false);
+            tile[4] = readTile("/tiles/tree.png", true);
+            tile[5] = readTile("/tiles/sand.png", false);
         }catch(IOException e){
             e.printStackTrace();
         }
-
     }
 
     public void loadMap(String filePath){
