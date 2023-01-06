@@ -24,7 +24,7 @@ public class CollisionChecker {
 
         int tileNum1, tileNum2;
 
-        switch(entity.direction){
+        switch(entity.direction){// EPISOD 6 24:00 tlumaczy
             case"up":
                 entityTopRow = (entityTopWorldY - entity.speed)/gp.tileSize;
                 tileNum1 = gp.tileM.mapTileNum[entityLeftCol][entityTopRow]; //lewy róg kwadratu
@@ -34,10 +34,28 @@ public class CollisionChecker {
                 }
                 break;
             case"down":
+                entityBottomRow = (entityBottomWorldY + entity.speed)/gp.tileSize;
+                tileNum1 = gp.tileM.mapTileNum[entityLeftCol][entityBottomRow]; //lewy róg kwadratu
+                tileNum2 = gp.tileM.mapTileNum[entityRightCol][entityBottomRow];  //prawy rog kwadratu
+                if(gp.tileM.tile[tileNum1].collision == true || gp.tileM.tile[tileNum2].collision == true){
+                    entity.collisionOn = true;
+                }
                 break;
             case"left":
+                entityLeftCol = (entityLeftWorldX - entity.speed)/gp.tileSize;
+                tileNum1 = gp.tileM.mapTileNum[entityLeftCol][entityTopRow]; //lewy róg kwadratu
+                tileNum2 = gp.tileM.mapTileNum[entityLeftCol][entityBottomRow];  //prawy rog kwadratu
+                if(gp.tileM.tile[tileNum1].collision == true || gp.tileM.tile[tileNum2].collision == true){
+                    entity.collisionOn = true;
+                }
                 break;
             case "right":
+                entityRightCol = (entityRightWorldX + entity.speed)/gp.tileSize;
+                tileNum1 = gp.tileM.mapTileNum[entityRightCol][entityTopRow]; //lewy róg kwadratu
+                tileNum2 = gp.tileM.mapTileNum[entityRightCol][entityBottomRow];  //prawy rog kwadratu
+                if(gp.tileM.tile[tileNum1].collision == true || gp.tileM.tile[tileNum2].collision == true){
+                    entity.collisionOn = true;
+                }
                 break;
 
 
