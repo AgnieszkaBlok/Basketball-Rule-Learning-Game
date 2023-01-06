@@ -1,6 +1,7 @@
 package Main;
 
 import Entity.Player;
+import Objects.SuperObjects;
 import tile.TileManager;
 
 import javax.swing.*;
@@ -32,7 +33,9 @@ public class GamePanel extends JPanel implements  Runnable{
     Thread gameThread; //program zaczyna dopoki nie zatrzymama
 
     public CollisionChecker cChecker = new CollisionChecker(this);
+    public AssetSetter aSetter = new AssetSetter(this);
      public Player player = new Player(this, keyH);
+     public SuperObjects obj[] = new SuperObjects[10]; //przygotowanie na maks 10 obietow naraz
 
 
 
@@ -42,6 +45,11 @@ public class GamePanel extends JPanel implements  Runnable{
         this.setDoubleBuffered(true);// better rendering
         this.addKeyListener(keyH);
         this.setFocusable(true);
+    }
+
+    public void setupGame(){
+        aSetter.setObject(); //
+
     }
 
     public void startGameThread(){
@@ -113,7 +121,14 @@ public class GamePanel extends JPanel implements  Runnable{
         super.paintComponent(g);
 
         Graphics2D g2 = (Graphics2D) g;
+        //tile
         tileM.draw(g2);
+        //object
+        for(int i =0; i<obj.length; i++){
+            if(obj[i] != null){
+                obj[i].draw(g2, this);
+            }
+        }
 
         player.draw(g2);
         g2.dispose();//??? 8.05 film 2
