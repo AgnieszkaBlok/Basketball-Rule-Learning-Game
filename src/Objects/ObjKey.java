@@ -4,13 +4,13 @@ import javax.imageio.ImageIO;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-public class ObjBall extends SuperObjects{
+public class ObjKey extends SuperObjects{
 
-    public ObjBall(){
+    public ObjKey(){
 
-        name ="Ball";
+        name ="Key";
         try{
-            image = ImageIO.read(new FileInputStream("res/objects/ball.png"));
+            image = ImageIO.read(new FileInputStream("res/objects/key.png"));
 
 
 

@@ -123,6 +123,7 @@ public class GamePanel extends JPanel implements  Runnable{
         Graphics2D g2 = (Graphics2D) g;
         //tile
         tileM.draw(g2);
+
         //object
         for(int i =0; i<obj.length; i++){
             if(obj[i] != null){
