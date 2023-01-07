@@ -12,7 +12,7 @@ import java.io.IOException;
 public class Player extends Entity {
     GamePanel gp;
     KeyHandler keyH;
-
+   int hasKey = 0;
     public final int screenX;
     public final int screenY;
 
@@ -79,11 +79,14 @@ public class Player extends Entity {
                 direction ="right";
 
             }
-            //Check colision
+            //Check tile  colision
 
             collisionOn = false;
             gp.cChecker.checkTile(this);
 
+            //check object colision
+            int objIndex = gp.cChecker.checkObject(this,true);
+            pickUpObject(objIndex);
             //if colision is false can move
             if(collisionOn == false){
                 switch(direction){
@@ -117,6 +120,29 @@ public class Player extends Entity {
         }
 
 
+    }
+
+    public void pickUpObject( int i) {
+
+        if (i != 999) {
+
+            String objectName = gp.obj[i].name;
+
+            switch (objectName) {
+                case "Key":
+                    hasKey++;
+                    gp.obj[i] = null;
+                    System.out.println("Key" + hasKey);
+                    break;
+                case "Door":
+                    if (hasKey > 0) {
+                        gp.obj[i] = null;
+                        hasKey--;
+                    }
+                    break;
+
+            }
+        }
     }
     public void draw(Graphics2D g2){
 
