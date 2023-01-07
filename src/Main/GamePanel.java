@@ -30,6 +30,7 @@ public class GamePanel extends JPanel implements  Runnable{
     TileManager tileM = new TileManager(this);
 
     KeyHandler keyH =new KeyHandler();
+    public Ui ui = new Ui(this);
     Thread gameThread; //program zaczyna dopoki nie zatrzymama
 
     public CollisionChecker cChecker = new CollisionChecker(this);
@@ -130,8 +131,13 @@ public class GamePanel extends JPanel implements  Runnable{
                 obj[i].draw(g2, this);
             }
         }
+        //player
 
         player.draw(g2);
+
+        // UI
+        ui.draw(g2);
+
         g2.dispose();//??? 8.05 film 2
 
 

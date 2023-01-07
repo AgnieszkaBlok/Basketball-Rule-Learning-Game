@@ -12,7 +12,7 @@ import java.io.IOException;
 public class Player extends Entity {
     GamePanel gp;
     KeyHandler keyH;
-   int hasKey = 0;
+   public int hasKey = 0;
     public final int screenX;
     public final int screenY;
 
@@ -138,8 +138,16 @@ public class Player extends Entity {
                     if (hasKey > 0) {
                         gp.obj[i] = null;
                         hasKey--;
-                    }
+                        //gp.ui.showMessage("You opened the door");
+                    }else{
+                       gp.ui.showMessage("You need a key");
+                   }
                     break;
+                case "Chest":
+                    gp.ui.gameFinished = true;
+
+                    break;
+
 
             }
         }
