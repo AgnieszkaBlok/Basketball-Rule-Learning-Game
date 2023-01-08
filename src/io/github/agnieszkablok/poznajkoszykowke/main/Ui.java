@@ -43,8 +43,8 @@ public class Ui {
 
             text = "Znalazłeś księgę";
             textLenght = (int)g2.getFontMetrics().getStringBounds(text,g2).getWidth();
-             x = gp.screenWidth/2 - textLenght/2 ;
-             y =gp.screenHeight/2 - (gp.tileSize*3);
+             x = gp.SCREEN_WIDTH /2 - textLenght/2 ;
+             y =gp.SCREEN_HEIGHT /2 - (gp.TILE_SIZE *3);
 
              g2.drawString(text,x,y);
 
@@ -52,8 +52,8 @@ public class Ui {
             g2.setColor(Color.ORANGE);
             text = "Gratulacje";
             textLenght = (int)g2.getFontMetrics().getStringBounds(text,g2).getWidth();
-            x = gp.screenWidth/2 - textLenght/2 ;
-            y =gp.screenHeight/2 + (gp.tileSize*2);
+            x = gp.SCREEN_WIDTH /2 - textLenght/2 ;
+            y =gp.SCREEN_HEIGHT /2 + (gp.TILE_SIZE *2);
             g2.drawString(text,x,y);
 
 
@@ -67,14 +67,14 @@ public class Ui {
 
             g2.setFont(arial_40);
             g2.setColor(Color.WHITE);
-            g2.drawImage(keyImage, gp.tileSize/2,gp.tileSize/2,gp.tileSize,gp.tileSize,null);
+            g2.drawImage(keyImage, gp.TILE_SIZE /2,gp.TILE_SIZE /2,gp.TILE_SIZE,gp.TILE_SIZE,null);
             g2.drawString("x" + gp.player.hasKey,70,60);
 
             //MESSAGE
             if(messageOn  == true){
 
                 g2.setFont(g2.getFont().deriveFont(30F));
-                g2.drawString(message, gp.tileSize/2, gp.tileSize*5);
+                g2.drawString(message, gp.TILE_SIZE /2, gp.TILE_SIZE *5);
 
                 messageCounter++;
 

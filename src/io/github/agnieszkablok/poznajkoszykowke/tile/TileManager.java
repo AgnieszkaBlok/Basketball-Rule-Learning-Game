@@ -16,7 +16,7 @@ public class TileManager {
     public TileManager(GamePanel gp){
         this.gp = gp;
         tile = new Tile[10];//liczba naszych rodzajow bloczkow
-        mapTileNum = new int[gp.maxWorldCol][gp.maxWorldRow];
+        mapTileNum = new int[gp.MAX_WORLD_COL][gp.MAX_WORLD_ROW];
         getTileImage();
         loadMap("res/maps/world01.txt");
     }
@@ -52,11 +52,11 @@ public class TileManager {
             int col = 0;
             int row = 0;
 
-            while(col < gp.maxWorldCol && row < gp.maxWorldRow){
+            while(col < gp.MAX_WORLD_COL && row < gp.MAX_WORLD_ROW){
 
                 String line = br.readLine();//czyta linie tekstu, tylko string przyjmuje
 
-                while(col < gp.maxWorldCol){
+                while(col < gp.MAX_WORLD_COL){
                     String[] numbers = line.split(" ") ;//podzial wyrazu stringa wokol dopasowan wyrazu
                     int num = Integer.parseInt(numbers[col]);
 
@@ -64,7 +64,7 @@ public class TileManager {
                     col++;
                 }
 
-                if(col == gp.maxWorldCol){
+                if(col == gp.MAX_WORLD_COL){
                     col = 0;
                     row++;
 
@@ -83,26 +83,26 @@ public class TileManager {
         int worldRow = 0;
 
 
-        while(worldCol < gp.maxWorldCol && worldRow < gp.maxWorldRow){
+        while(worldCol < gp.MAX_WORLD_COL && worldRow < gp.MAX_WORLD_ROW){
 
             int tileNum = mapTileNum [worldCol] [worldRow];
             /// epizot 5 15:30 tlumaczy
-            int worldX = worldCol * gp.tileSize;
-            int worldY = worldRow * gp.tileSize;
+            int worldX = worldCol * gp.TILE_SIZE;
+            int worldY = worldRow * gp.TILE_SIZE;
             int screenX = worldX - gp.player.worldX + gp.player.screenX;
             int screenY = worldY - gp.player.worldY + gp.player.screenY;
 
-            if(worldX + gp.tileSize > gp.player.worldX - gp.player.screenX &&  // zeby wyswietlaly sie tylko te z najblizszego otoczenia a nie cala mapa
-                    worldX -gp.tileSize < gp.player.worldX + gp.player.screenX &&
-                    worldY + gp.tileSize>gp.player.worldY -gp.player.screenY &&
-                    worldY - gp.tileSize < gp.player.worldY + gp.player.screenY) {
+            if(worldX + gp.TILE_SIZE > gp.player.worldX - gp.player.screenX &&  // zeby wyswietlaly sie tylko te z najblizszego otoczenia a nie cala mapa
+                    worldX -gp.TILE_SIZE < gp.player.worldX + gp.player.screenX &&
+                    worldY + gp.TILE_SIZE >gp.player.worldY -gp.player.screenY &&
+                    worldY - gp.TILE_SIZE < gp.player.worldY + gp.player.screenY) {
 
-                g2.drawImage(tile[tileNum].image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+                g2.drawImage(tile[tileNum].image, screenX, screenY, gp.TILE_SIZE, gp.TILE_SIZE, null);
             }
             worldCol++;
 
 
-            if(worldCol == gp.maxWorldCol){
+            if(worldCol == gp.MAX_WORLD_COL){
                 worldCol = 0;
                 worldRow ++;
 

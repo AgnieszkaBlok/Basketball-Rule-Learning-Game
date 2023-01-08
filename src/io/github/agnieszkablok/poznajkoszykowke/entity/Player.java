@@ -6,7 +6,6 @@ import io.github.agnieszkablok.poznajkoszykowke.items.Item;
 import io.github.agnieszkablok.poznajkoszykowke.items.Key;
 import io.github.agnieszkablok.poznajkoszykowke.main.GamePanel;
 import io.github.agnieszkablok.poznajkoszykowke.main.KeyHandler;
-import io.github.agnieszkablok.poznajkoszykowke.quiz.Question;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -24,8 +23,8 @@ public class Player extends Entity {
     public Player(GamePanel gp, KeyHandler keyH) {
         this.gp = gp;
         this.keyH = keyH;
-        screenX = gp.screenWidth / 2 - (gp.tileSize / 2);
-        screenY = gp.screenHeight / 2 - (gp.tileSize / 2);
+        screenX = gp.SCREEN_WIDTH / 2 - (gp.TILE_SIZE / 2);
+        screenY = gp.SCREEN_HEIGHT / 2 - (gp.TILE_SIZE / 2);
 
         solidArea = new Rectangle(); // zrobienie strefy kolizyjnej, jako ze caly ma 48x48
         solidArea.x = 8;
@@ -40,8 +39,8 @@ public class Player extends Entity {
 
     public void setDefaultValues() { //player position on world map
 
-        worldX = gp.tileSize * 23;
-        worldY = gp.tileSize * 21;
+        worldX = gp.TILE_SIZE * 23;
+        worldY = gp.TILE_SIZE * 21;
         speed = 4;
         direction = "down";
     }
@@ -187,6 +186,6 @@ public class Player extends Entity {
                 break;
 
         }
-        g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(image, screenX, screenY, gp.TILE_SIZE, gp.TILE_SIZE, null);
     }
 }
