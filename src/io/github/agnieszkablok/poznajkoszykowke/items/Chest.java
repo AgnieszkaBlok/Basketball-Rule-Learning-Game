@@ -7,14 +7,10 @@ import java.io.IOException;
 public class Chest extends Item {
 
     public Chest(){
-
-        name = "Chest";
         try {
             image = ImageIO.read(new FileInputStream("res/objects/chest.png"));
-
-
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Couldn't read the chest image!");
         }
     }
 }

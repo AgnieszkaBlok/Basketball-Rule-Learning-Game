@@ -8,7 +8,6 @@ import java.awt.image.BufferedImage;
 public class Item {
 
     public BufferedImage image;
-    public String name;
     public boolean collision = false;
     public int worldX, worldY;
     public Rectangle solidArea = new Rectangle(0,0,48,48);//solid area dla kazdego obiektu
@@ -30,10 +29,4 @@ public class Item {
 
 
     }
-
-    public enum Type{
-        CHEST, DOOR, KEY,
-    }
-
-
 }

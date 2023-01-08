@@ -5,17 +5,11 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 public class Key extends Item {
-
     public Key(){
-
-        name ="Key";
         try{
             image = ImageIO.read(new FileInputStream("res/objects/key.png"));
-
-
-
         }catch(IOException e){
-            e.printStackTrace();
+            System.out.println("Couldn't read the chest image!");
         }
     }
 
