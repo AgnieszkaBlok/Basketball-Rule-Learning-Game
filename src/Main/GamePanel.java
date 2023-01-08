@@ -30,13 +30,21 @@ public class GamePanel extends JPanel implements  Runnable{
     TileManager tileM = new TileManager(this);
 
     KeyHandler keyH =new KeyHandler();
+    public CollisionChecker cChecker = new CollisionChecker(this);
+    public AssetSetter aSetter = new AssetSetter(this);
     public Ui ui = new Ui(this);
     Thread gameThread; //program zaczyna dopoki nie zatrzymama
 
-    public CollisionChecker cChecker = new CollisionChecker(this);
-    public AssetSetter aSetter = new AssetSetter(this);
+
      public Player player = new Player(this, keyH);
      public SuperObjects obj[] = new SuperObjects[10]; //przygotowanie na maks 10 obietow naraz
+
+    //Gama state
+    public int gameState;
+    public final int titleState =0;
+
+
+
 
 
 
@@ -50,6 +58,7 @@ public class GamePanel extends JPanel implements  Runnable{
 
     public void setupGame(){
         aSetter.setObject(); //
+        gameState = titleState;
 
     }
 
@@ -91,21 +100,32 @@ public class GamePanel extends JPanel implements  Runnable{
         super.paintComponent(g);
 
         Graphics2D g2 = (Graphics2D) g;
-        //tile
-        tileM.draw(g2);
 
-        //object
-        for(int i =0; i<obj.length; i++){
-            if(obj[i] != null){
-                obj[i].draw(g2, this);
-            }
+      //Title screen
+        if(gameState == titleState){
+            ui.draw(g2);
+
+
         }
-        //player
+        else{
+            //tile
+            tileM.draw(g2);
 
-        player.draw(g2);
+            //object
+            for(int i =0; i<obj.length; i++){
+                if(obj[i] != null){
+                    obj[i].draw(g2, this);
+                }
+            }
+            //player
 
-        // UI
-        ui.draw(g2);
+            player.draw(g2);
+
+            // UI
+            ui.draw(g2);
+
+        }
+
 
         g2.dispose();//??? 8.05 film 2
 

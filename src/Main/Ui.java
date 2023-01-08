@@ -7,7 +7,8 @@ import java.awt.image.BufferedImage;
 
 public class Ui {
     GamePanel gp;
-    Font arial_40, arialb_40,arialb_80;
+    Graphics2D g2;
+    Font arial_40, arialb_40,arialb_80,title_60;
     BufferedImage keyImage;
     public boolean messageOn = false;
     public String message = "";
@@ -20,6 +21,7 @@ public class Ui {
         arial_40 = new Font("Arial",Font.PLAIN,40);
         arialb_40 = new Font("Arial",Font.BOLD,40);
         arialb_80 = new Font("Arial",Font.BOLD,80);
+        title_60 = new Font("Century",Font.BOLD,60);
         ObjKey key = new ObjKey();
        keyImage = key.image;
 
@@ -30,6 +32,12 @@ public class Ui {
         messageOn = true;
     }
     public void draw (Graphics2D g2) {
+        this.g2 = g2;
+
+        //Title state
+        if(gp.gameState == gp.titleState){
+            drawTitleScreen();
+        }
 
         if (gameFinished == true){
 
@@ -59,10 +67,6 @@ public class Ui {
 
             gp.gameThread = null;
 
-
-
-
-
         }else{
 
             g2.setFont(arial_40);
@@ -83,10 +87,26 @@ public class Ui {
                     messageOn = false;
                 }
             }
-
-
         }
+    }
 
+    public void drawTitleScreen(){
+        //Title name
+        g2.setColor(new Color(98,157,90));
+        g2.fillRect(0,0,gp.screenWidth,gp.screenHeight);
+        g2.setFont(title_60);
+        String text = "Poznaj koszykówkę";
+        int x = gp.screenWidth/10;
+        int y = gp.tileSize*3;
+        //Shadow
+        g2.setColor(Color.black);
+        g2.drawString(text, x+3, y+5);
+        //Main color
+        g2.setColor(Color.WHITE);
+        g2.drawString(text,x,y);
+        //Player image
+        x = gp.screenWidth/2;
+        y += gp.tileSize*2;
 
 
     }
