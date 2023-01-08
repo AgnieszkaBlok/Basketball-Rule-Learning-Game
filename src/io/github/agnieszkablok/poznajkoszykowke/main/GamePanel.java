@@ -34,13 +34,14 @@ public class GamePanel extends JPanel implements  Runnable{
     Thread gameThread; //program zaczyna dopoki nie zatrzymama
 
     public CollisionChecker cChecker = new CollisionChecker(this);
-    public AssetSetter aSetter = new AssetSetter(this);
+    public AssetSetter aSetter;
      public Player player = new Player(this, keyH);
      public Item obj[] = new Item[10]; //przygotowanie na maks 10 obietow naraz
 
 
 
     public GamePanel() {
+        this.aSetter = new AssetSetter(this);
         this.setPreferredSize(new Dimension(screenWidth,screenHeight)); //panel size of the game panel
         this.setBackground(Color.black);
         this.setDoubleBuffered(true);// better rendering
