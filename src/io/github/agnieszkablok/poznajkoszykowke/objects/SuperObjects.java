@@ -1,6 +1,6 @@
-package Objects;
+package io.github.agnieszkablok.poznajkoszykowke.objects;
 
-import Main.GamePanel;
+import io.github.agnieszkablok.poznajkoszykowke.main.GamePanel;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

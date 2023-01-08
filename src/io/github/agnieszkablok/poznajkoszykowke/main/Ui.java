@@ -1,6 +1,6 @@
-package Main;
+package io.github.agnieszkablok.poznajkoszykowke.main;
 
-import Objects.ObjKey;
+import io.github.agnieszkablok.poznajkoszykowke.objects.ObjKey;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

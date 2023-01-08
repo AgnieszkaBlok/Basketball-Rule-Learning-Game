@@ -1,8 +1,7 @@
-package Entity;
+package io.github.agnieszkablok.poznajkoszykowke.entity;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.nio.Buffer;
 
 //pleyer,monter,npc classes
 public class Entity {

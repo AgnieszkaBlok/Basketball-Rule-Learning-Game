@@ -1,4 +1,4 @@
-import Quiz.Question;
+import io.github.agnieszkablok.poznajkoszykowke.quiz.Question;
 
 import java.io.IOException;
 

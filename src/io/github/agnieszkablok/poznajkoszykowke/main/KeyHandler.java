@@ -1,4 +1,4 @@
-package Main;
+package io.github.agnieszkablok.poznajkoszykowke.main;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;

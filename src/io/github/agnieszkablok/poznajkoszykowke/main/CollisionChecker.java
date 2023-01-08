@@ -1,6 +1,6 @@
-package Main;
+package io.github.agnieszkablok.poznajkoszykowke.main;
 
-import Entity.Entity;
+import io.github.agnieszkablok.poznajkoszykowke.entity.Entity;
 
 public class CollisionChecker {
     GamePanel gp;

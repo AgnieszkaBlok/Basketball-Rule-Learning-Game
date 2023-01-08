@@ -1,8 +1,8 @@
-package Main;
+package io.github.agnieszkablok.poznajkoszykowke.main;
 
-import Entity.Player;
-import Objects.SuperObjects;
-import tile.TileManager;
+import io.github.agnieszkablok.poznajkoszykowke.entity.Player;
+import io.github.agnieszkablok.poznajkoszykowke.objects.SuperObjects;
+import io.github.agnieszkablok.poznajkoszykowke.tile.TileManager;
 
 import javax.swing.*;
 import java.awt.*;

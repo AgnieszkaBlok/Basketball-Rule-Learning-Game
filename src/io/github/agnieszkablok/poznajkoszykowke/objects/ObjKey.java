@@ -1,4 +1,4 @@
-package Objects;
+package io.github.agnieszkablok.poznajkoszykowke.objects;
 
 import javax.imageio.ImageIO;
 import java.io.FileInputStream;

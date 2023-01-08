@@ -1,9 +1,6 @@
-package Quiz;
-
-import Main.GamePanel;
+package io.github.agnieszkablok.poznajkoszykowke.quiz;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 

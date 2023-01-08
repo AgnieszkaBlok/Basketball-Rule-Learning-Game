@@ -1,6 +1,6 @@
-package tile;
+package io.github.agnieszkablok.poznajkoszykowke.tile;
 
-import Main.GamePanel;
+import io.github.agnieszkablok.poznajkoszykowke.main.GamePanel;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
