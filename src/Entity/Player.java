@@ -2,6 +2,7 @@ package Entity;
 
 import Main.GamePanel;
 import Main.KeyHandler;
+import Quiz.Question;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -12,6 +13,7 @@ import java.io.IOException;
 public class Player extends Entity {
     GamePanel gp;
     KeyHandler keyH;
+    Question questions;
    public int hasKey = 0;
     public final int screenX;
     public final int screenY;
@@ -133,6 +135,8 @@ public class Player extends Entity {
                     hasKey++;
                     gp.obj[i] = null;
                     System.out.println("Key" + hasKey);
+                   // questions. otwierac okno dialogowe
+
                     break;
                 case "Door":
                     if (hasKey > 0) {

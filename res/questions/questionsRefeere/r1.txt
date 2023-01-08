@@ -1,0 +1,3 @@
+Czy asystent trenera ma prawo prosić o timeout?
+A Tak
+B Nie

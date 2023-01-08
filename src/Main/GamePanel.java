@@ -82,38 +82,7 @@ public class GamePanel extends JPanel implements  Runnable{
             }
         }
     }
-   /* public void run() {
-        double drawInterval = 1000000000/FPS; //0.0166 secounds
-        double nextDrawTime = System.nanoTime() + drawInterval;
 
-        while(gameThread != null){ //dopoki game thread istnieje powtrzaj proces
-
-            // update information such as character postitions
-            update();
-            // draw the screen with the update information
-            repaint();
-
-
-            try {
-                double remainingTime = nextDrawTime - System.nanoTime();
-                remainingTime = remainingTime/1000000; //milli sekundy musza byc
-
-                if(remainingTime < 0){
-                    remainingTime = 0;
-                }
-
-                Thread.sleep((long)remainingTime);
-
-                nextDrawTime += drawInterval;
-
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-                //e.printStackTrace();
-            }
-
-        }
-
-    }*/
     public void update(){
     player.update();
 
