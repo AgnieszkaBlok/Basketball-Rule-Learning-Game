@@ -126,7 +126,7 @@ public class Player extends Entity {
     public void pickUpObject(int i) {
         if (i == 999) return;
 
-        Item item = gp.obj[i];
+        Item item = gp.getItemAt(i);
 
         if (item instanceof Chest) {
             gp.ui.gameFinished = true;
@@ -136,10 +136,10 @@ public class Player extends Entity {
                 return;
             }
             hasKey--;
-            gp.obj[i] = null;
+            gp.deleteItemAt(i);
         } else if (item instanceof Key) {
             hasKey++;
-            gp.obj[i] = null;
+            gp.deleteItemAt(i);
             System.out.println("Key" + hasKey);
         }
     }

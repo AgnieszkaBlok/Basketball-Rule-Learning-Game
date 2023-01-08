@@ -2,27 +2,47 @@ package io.github.agnieszkablok.poznajkoszykowke.main;
 
 import io.github.agnieszkablok.poznajkoszykowke.items.*;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+
 public class AssetSetter {
 
     GamePanel gp;
 
-    public AssetSetter(GamePanel gp){
+    private static Item placeItemFromLine(String line){
 
-        this.gp = gp;
+        String[] tokens = line.split(",");
+        String itemName;
+        int x, y;
+
+        try{
+            itemName = tokens[0];
+            x = Integer.parseInt(tokens[1]);
+            y = Integer.parseInt(tokens[2]);
+        } catch (NumberFormatException | ArrayIndexOutOfBoundsException e){
+            System.out.println("Couldn't parse item line \"" + line + "\"");
+            return null;
+        }
+
+        return switch (itemName) {
+            case "Ball" -> new Ball(x, y);
+            case "Chest" -> new Chest(x, y);
+            case "Door" -> new Door(x, y);
+            case "Key" -> new Key(x, y);
+            case "Whistle" -> new Whistle(x, y);
+            default -> null;
+        };
     }
 
-    private void placeItem(int index, Item item, int x, int y){
-        gp.obj[index] = item;
-        gp.obj[index].worldX = x * gp.tileSize;
-        gp.obj[index].worldY = y * gp.tileSize;
-    }
-    public void setObject(){
-        placeItem(0, new Whistle(), 23, 7);
-        placeItem(1, new Ball(), 23, 40);
-        placeItem(2, new Door(), 10, 11);
-        placeItem(3, new Door(), 12, 22);
-        placeItem(4, new Door(), 8, 28);
-        placeItem(5, new Chest(), 10, 7);
-        placeItem(6, new Ball(), 38, 8);
+    public static List<Item> getItemsFromFile(String filepath) throws FileNotFoundException {
+        BufferedReader reader = new BufferedReader(new FileReader(filepath));
+        return reader.lines().map(AssetSetter::placeItemFromLine)
+                .filter(Objects::nonNull)
+                .collect(Collectors.toList());
     }
 }

@@ -20,7 +20,7 @@ public class Ui {
         arial_40 = new Font("Arial",Font.PLAIN,40);
         arialb_40 = new Font("Arial",Font.BOLD,40);
         arialb_80 = new Font("Arial",Font.BOLD,80);
-        Key key = new Key();
+        Key key = new Key(-1, -1);
        keyImage = key.image;
 
     }

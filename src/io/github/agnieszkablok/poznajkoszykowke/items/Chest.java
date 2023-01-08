@@ -6,7 +6,8 @@ import java.io.IOException;
 
 public class Chest extends Item {
 
-    public Chest(){
+    public Chest(int x, int y){
+        super(x, y);
         try {
             image = ImageIO.read(new FileInputStream("res/objects/chest.png"));
         } catch (IOException e) {

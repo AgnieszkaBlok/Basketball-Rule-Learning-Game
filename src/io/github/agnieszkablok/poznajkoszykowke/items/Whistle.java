@@ -5,7 +5,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 public class Whistle extends Item{
-    public Whistle(){
+    public Whistle(int x, int y){
+        super(x, y);
         try {
             image = ImageIO.read(new FileInputStream("res/objects/whistle.png"));
         } catch (IOException e) {

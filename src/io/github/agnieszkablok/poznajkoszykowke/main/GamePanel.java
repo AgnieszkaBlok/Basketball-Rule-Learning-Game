@@ -6,6 +6,8 @@ import io.github.agnieszkablok.poznajkoszykowke.tile.TileManager;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
+import java.io.FileNotFoundException;
 
 public class GamePanel extends JPanel implements  Runnable{
 
@@ -34,14 +36,26 @@ public class GamePanel extends JPanel implements  Runnable{
     Thread gameThread; //program zaczyna dopoki nie zatrzymama
 
     public CollisionChecker cChecker = new CollisionChecker(this);
-    public AssetSetter aSetter;
-     public Player player = new Player(this, keyH);
-     public Item obj[] = new Item[10]; //przygotowanie na maks 10 obietow naraz
 
+     public Player player = new Player(this, keyH);
+
+     public List<Item> items;
+
+
+    public Item getItemAt(int index){
+        return items.get(index);
+    }
+
+    public void deleteItemAt(int index){
+        items.set(index, null);
+    }
+
+    public int getItemsCnt(){
+        return items.size();
+    }
 
 
     public GamePanel() {
-        this.aSetter = new AssetSetter(this);
         this.setPreferredSize(new Dimension(screenWidth,screenHeight)); //panel size of the game panel
         this.setBackground(Color.black);
         this.setDoubleBuffered(true);// better rendering
@@ -50,8 +64,11 @@ public class GamePanel extends JPanel implements  Runnable{
     }
 
     public void setupGame(){
-        aSetter.setObject(); //
-
+        try{
+            items = AssetSetter.getItemsFromFile("res/items_locations/locations.loc");
+        } catch (FileNotFoundException e){
+            System.out.println("Could not find file with items locations!");
+        }
     }
 
     public void startGameThread(){
@@ -85,7 +102,7 @@ public class GamePanel extends JPanel implements  Runnable{
     }
 
     public void update(){
-    player.update();
+        player.update();
 
     }
     public void paintComponent(Graphics g){ //standard method to draw on jpanel
@@ -96,9 +113,9 @@ public class GamePanel extends JPanel implements  Runnable{
         tileM.draw(g2);
 
         //object
-        for(int i =0; i<obj.length; i++){
-            if(obj[i] != null){
-                obj[i].draw(g2, this);
+        for(int i =0; i<getItemsCnt(); i++){
+            if(getItemAt(i) != null){
+                getItemAt(i).draw(g2, this);
             }
         }
         //player

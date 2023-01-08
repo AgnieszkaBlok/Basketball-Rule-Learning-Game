@@ -5,7 +5,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 public class Ball extends Item{
-    public Ball(){
+    public Ball(int x, int y){
+        super(x, y);
         try {
             image = ImageIO.read(new FileInputStream("res/objects/ball.png"));
         } catch (IOException e) {

@@ -5,7 +5,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 public class Key extends Item {
-    public Key(){
+    public Key(int x, int y){
+        super(x, y);
         try{
             image = ImageIO.read(new FileInputStream("res/objects/key.png"));
         }catch(IOException e){
