@@ -1,10 +1,10 @@
-package Objects;
+package io.github.agnieszkablok.poznajkoszykowke.items;
 
 import javax.imageio.ImageIO;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-public class ObjKey extends SuperObjects{
+public class ObjKey extends Item {
 
     public ObjKey(){
 

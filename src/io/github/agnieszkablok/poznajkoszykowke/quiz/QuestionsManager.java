@@ -1,4 +1,4 @@
-package Quiz;
+package io.github.agnieszkablok.poznajkoszykowke.quiz;
 
 import java.io.File;
 import java.io.IOException;
@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 /**
  * A class that is managing questions used in the game.
  */
-public class QuestionManager {
+public class QuestionsManager {
 
     private static final String QUESTION_FILE_EXT = "question";
     private final List<Question> playerQuestions;
@@ -57,7 +57,7 @@ public class QuestionManager {
      * @param pathToRefereeQuestions path to folder with referee questions
      * @throws IOException if the path points to the file or the specified folder is non-existent
      */
-    public QuestionManager(String pathToPlayerQuestions, String pathToRefereeQuestions) throws IOException {
+    public QuestionsManager(String pathToPlayerQuestions, String pathToRefereeQuestions) throws IOException {
         File playerQuestionsDir = new File(pathToPlayerQuestions);
         File refereeQuestionsDir = new File(pathToRefereeQuestions);
 

@@ -1,8 +1,8 @@
-package Main;
+package io.github.agnieszkablok.poznajkoszykowke.main;
 
-import Entity.Player;
-import Objects.SuperObjects;
-import tile.TileManager;
+import io.github.agnieszkablok.poznajkoszykowke.entity.Player;
+import io.github.agnieszkablok.poznajkoszykowke.items.Item;
+import io.github.agnieszkablok.poznajkoszykowke.tile.TileManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -36,7 +36,7 @@ public class GamePanel extends JPanel implements  Runnable{
     public CollisionChecker cChecker = new CollisionChecker(this);
     public AssetSetter aSetter = new AssetSetter(this);
      public Player player = new Player(this, keyH);
-     public SuperObjects obj[] = new SuperObjects[10]; //przygotowanie na maks 10 obietow naraz
+     public Item obj[] = new Item[10]; //przygotowanie na maks 10 obietow naraz
 
 
 

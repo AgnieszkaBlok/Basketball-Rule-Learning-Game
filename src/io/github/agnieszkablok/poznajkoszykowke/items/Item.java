@@ -1,11 +1,11 @@
-package Objects;
+package io.github.agnieszkablok.poznajkoszykowke.items;
 
-import Main.GamePanel;
+import io.github.agnieszkablok.poznajkoszykowke.main.GamePanel;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class SuperObjects {
+public class Item {
 
     public BufferedImage image;
     public String name;

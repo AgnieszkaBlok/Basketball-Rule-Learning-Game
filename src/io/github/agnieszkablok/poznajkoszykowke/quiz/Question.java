@@ -1,4 +1,4 @@
-package Quiz;
+package io.github.agnieszkablok.poznajkoszykowke.quiz;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

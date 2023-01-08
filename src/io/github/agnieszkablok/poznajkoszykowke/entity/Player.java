@@ -1,8 +1,8 @@
-package Entity;
+package io.github.agnieszkablok.poznajkoszykowke.entity;
 
-import Main.GamePanel;
-import Main.KeyHandler;
-import Quiz.Question;
+import io.github.agnieszkablok.poznajkoszykowke.main.GamePanel;
+import io.github.agnieszkablok.poznajkoszykowke.main.KeyHandler;
+import io.github.agnieszkablok.poznajkoszykowke.quiz.Question;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

@@ -1,8 +1,8 @@
-package Main;
+package io.github.agnieszkablok.poznajkoszykowke.main;
 
-import Objects.ObjChest;
-import Objects.ObjDoor;
-import Objects.ObjKey;
+import io.github.agnieszkablok.poznajkoszykowke.items.ObjChest;
+import io.github.agnieszkablok.poznajkoszykowke.items.ObjDoor;
+import io.github.agnieszkablok.poznajkoszykowke.items.ObjKey;
 
 public class AssetSetter {
 
