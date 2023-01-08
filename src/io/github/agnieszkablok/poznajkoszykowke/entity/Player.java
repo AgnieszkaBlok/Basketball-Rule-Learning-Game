@@ -1,11 +1,10 @@
 package io.github.agnieszkablok.poznajkoszykowke.entity;
 
-import io.github.agnieszkablok.poznajkoszykowke.items.Chest;
-import io.github.agnieszkablok.poznajkoszykowke.items.Door;
-import io.github.agnieszkablok.poznajkoszykowke.items.Item;
-import io.github.agnieszkablok.poznajkoszykowke.items.Key;
+import io.github.agnieszkablok.poznajkoszykowke.items.*;
 import io.github.agnieszkablok.poznajkoszykowke.main.GamePanel;
 import io.github.agnieszkablok.poznajkoszykowke.main.KeyHandler;
+import io.github.agnieszkablok.poznajkoszykowke.quiz.QuestionManager;
+import io.github.agnieszkablok.poznajkoszykowke.quiz.QuestionWindow;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -14,11 +13,19 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 public class Player extends Entity {
+    private static final String PLAYER_QUESTIONS_DIRECTORY = "res/questions/player";
+    private static final String REFEREE_QUESTIONS_DIRECTORY = "res/questions/referee";
+    private static final int INITIAL_HEART_CNT = 3;
+    private static final int INITIAL_SPEED = 4;
     GamePanel gp;
     KeyHandler keyH;
     public int hasKey = 0;
     public final int screenX;
     public final int screenY;
+
+    private QuestionManager questionManager;
+
+    private int heartsCnt;
 
     public Player(GamePanel gp, KeyHandler keyH) {
         this.gp = gp;
@@ -32,16 +39,24 @@ public class Player extends Entity {
         solidArea.width = 32;
         solidArea.height = 32;
 
+        this.heartsCnt = INITIAL_HEART_CNT;
+
+        try{
+            this.questionManager = new QuestionManager(PLAYER_QUESTIONS_DIRECTORY, REFEREE_QUESTIONS_DIRECTORY);
+        } catch(IOException e){
+            System.out.println("Exception while initializing QuestionManager");
+            e.printStackTrace();
+        }
+
         setDefaultValues();
         getPlayerImage();
-
     }
 
     public void setDefaultValues() { //player position on world map
 
         worldX = GamePanel.TILE_SIZE * 23;
         worldY = GamePanel.TILE_SIZE * 21;
-        speed = 4;
+        speed = INITIAL_SPEED;
         direction = "down";
     }
 
@@ -85,7 +100,7 @@ public class Player extends Entity {
             gp.cChecker.checkTile(this);
 
             //check object colision
-            int objIndex = gp.cChecker.checkObject(this, true);
+            int objIndex = gp.cChecker.checkItem(this, true);
             pickUpObject(objIndex);
             //if colision is false can move
             if (!collisionOn) {
@@ -113,6 +128,23 @@ public class Player extends Entity {
 
     }
 
+    private void handleResponseToQuestion(boolean response){
+        if(response)
+            hasKey++;
+        else
+            heartsCnt--;
+    }
+
+    private void handlePlayerQuestion(){
+        keyH.clearPressedButtons();
+        handleResponseToQuestion(QuestionWindow.showPlayerQuestion(gp, questionManager.getPlayerQuestion()));
+    }
+
+    private void handleRefereeQuestion(){
+        keyH.clearPressedButtons();
+        handleResponseToQuestion(QuestionWindow.showRefereeQuestion(gp, questionManager.getRefereeQuestion()));
+    }
+
     public void pickUpObject(int i) {
         if (i == 999) return;
 
@@ -131,6 +163,12 @@ public class Player extends Entity {
             hasKey++;
             gp.deleteItemAt(i);
             System.out.println("Key" + hasKey);
+        } else if (item instanceof Ball) {
+            handlePlayerQuestion();
+            gp.deleteItemAt(i);
+        } else if (item instanceof Whistle){
+            handleRefereeQuestion();
+            gp.deleteItemAt(i);
         }
     }
 

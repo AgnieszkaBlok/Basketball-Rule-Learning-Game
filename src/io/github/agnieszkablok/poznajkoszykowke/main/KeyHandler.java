@@ -11,6 +11,13 @@ import java.awt.event.KeyListener;
 
     }
 
+    public void clearPressedButtons(){
+        upPressed = false;
+        downPressed = false;
+        leftPressed = false;
+        rightPressed = false;
+    }
+
     @Override
     public void keyPressed(KeyEvent e) {
         int code = e.getKeyCode(); //zwraca numer klawisza, ktory byl wcisniety
