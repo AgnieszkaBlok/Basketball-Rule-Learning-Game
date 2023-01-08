@@ -5,14 +5,11 @@ import io.github.agnieszkablok.poznajkoszykowke.items.*;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class AssetSetter {
-
-    GamePanel gp;
 
     private static Item placeItemFromLine(String line){
 

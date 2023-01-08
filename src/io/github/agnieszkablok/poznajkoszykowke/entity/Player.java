@@ -23,8 +23,8 @@ public class Player extends Entity {
     public Player(GamePanel gp, KeyHandler keyH) {
         this.gp = gp;
         this.keyH = keyH;
-        screenX = gp.SCREEN_WIDTH / 2 - (gp.TILE_SIZE / 2);
-        screenY = gp.SCREEN_HEIGHT / 2 - (gp.TILE_SIZE / 2);
+        screenX = GamePanel.SCREEN_WIDTH / 2 - (GamePanel.TILE_SIZE / 2);
+        screenY = GamePanel.SCREEN_HEIGHT / 2 - (GamePanel.TILE_SIZE / 2);
 
         solidArea = new Rectangle(); // zrobienie strefy kolizyjnej, jako ze caly ma 48x48
         solidArea.x = 8;
@@ -39,8 +39,8 @@ public class Player extends Entity {
 
     public void setDefaultValues() { //player position on world map
 
-        worldX = gp.TILE_SIZE * 23;
-        worldY = gp.TILE_SIZE * 21;
+        worldX = GamePanel.TILE_SIZE * 23;
+        worldY = GamePanel.TILE_SIZE * 21;
         speed = 4;
         direction = "down";
     }
@@ -65,17 +65,17 @@ public class Player extends Entity {
     }
 
     public void update() {
-        if (keyH.downPressed == true || keyH.upPressed == true || keyH.leftPressed == true || keyH.rightPressed == true) {
-            if (keyH.upPressed == true) {
+        if (keyH.downPressed || keyH.upPressed || keyH.leftPressed || keyH.rightPressed) {
+            if (keyH.upPressed) {
                 direction = "up";
 
-            } else if (keyH.downPressed == true) {
+            } else if (keyH.downPressed) {
                 direction = "down";
 
-            } else if (keyH.leftPressed == true) {
+            } else if (keyH.leftPressed) {
                 direction = "left";
 
-            } else if (keyH.rightPressed == true) {
+            } else {
                 direction = "right";
 
             }
@@ -88,21 +88,12 @@ public class Player extends Entity {
             int objIndex = gp.cChecker.checkObject(this, true);
             pickUpObject(objIndex);
             //if colision is false can move
-            if (collisionOn == false) {
+            if (!collisionOn) {
                 switch (direction) {
-                    case "up":
-                        worldY -= speed;
-                        break;
-                    case "down":
-                        worldY += speed;
-                        break;
-                    case "left":
-                        worldX -= speed;
-                        break;
-                    case "right":
-                        worldX += speed;
-                        break;
-
+                    case "up" -> worldY -= speed;
+                    case "down" -> worldY += speed;
+                    case "left" -> worldX -= speed;
+                    case "right" -> worldX += speed;
                 }
             }
 
@@ -148,44 +139,39 @@ public class Player extends Entity {
         BufferedImage image = null;
 
         switch (direction) {
-            case "up":
+            case "up" -> {
                 if (spriteNum == 1) {
                     image = up1;
                 }
                 if (spriteNum == 2) {
                     image = up2;
                 }
-
-                break;
-
-            case "down":
+            }
+            case "down" -> {
                 if (spriteNum == 1) {
                     image = down1;
                 }
                 if (spriteNum == 2) {
                     image = down2;
                 }
-
-                break;
-            case "left":
+            }
+            case "left" -> {
                 if (spriteNum == 1) {
                     image = left1;
                 }
                 if (spriteNum == 2) {
                     image = left2;
                 }
-
-                break;
-            case "right":
+            }
+            case "right" -> {
                 if (spriteNum == 1) {
                     image = right1;
                 }
                 if (spriteNum == 2) {
                     image = right2;
                 }
-                break;
-
+            }
         }
-        g2.drawImage(image, screenX, screenY, gp.TILE_SIZE, gp.TILE_SIZE, null);
+        g2.drawImage(image, screenX, screenY, GamePanel.TILE_SIZE, GamePanel.TILE_SIZE, null);
     }
 }

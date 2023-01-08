@@ -31,7 +31,7 @@ public class Ui {
     }
     public void draw (Graphics2D g2) {
 
-        if (gameFinished == true){
+        if (gameFinished){
 
             g2.setFont(arialb_40);
             g2.setColor(Color.WHITE);
@@ -43,8 +43,8 @@ public class Ui {
 
             text = "Znalazłeś księgę";
             textLenght = (int)g2.getFontMetrics().getStringBounds(text,g2).getWidth();
-             x = gp.SCREEN_WIDTH /2 - textLenght/2 ;
-             y =gp.SCREEN_HEIGHT /2 - (gp.TILE_SIZE *3);
+             x = GamePanel.SCREEN_WIDTH /2 - textLenght/2 ;
+             y = GamePanel.SCREEN_HEIGHT /2 - (GamePanel.TILE_SIZE *3);
 
              g2.drawString(text,x,y);
 
@@ -52,8 +52,8 @@ public class Ui {
             g2.setColor(Color.ORANGE);
             text = "Gratulacje";
             textLenght = (int)g2.getFontMetrics().getStringBounds(text,g2).getWidth();
-            x = gp.SCREEN_WIDTH /2 - textLenght/2 ;
-            y =gp.SCREEN_HEIGHT /2 + (gp.TILE_SIZE *2);
+            x = GamePanel.SCREEN_WIDTH /2 - textLenght/2 ;
+            y = GamePanel.SCREEN_HEIGHT /2 + (GamePanel.TILE_SIZE *2);
             g2.drawString(text,x,y);
 
 
@@ -67,14 +67,14 @@ public class Ui {
 
             g2.setFont(arial_40);
             g2.setColor(Color.WHITE);
-            g2.drawImage(keyImage, gp.TILE_SIZE /2,gp.TILE_SIZE /2,gp.TILE_SIZE,gp.TILE_SIZE,null);
+            g2.drawImage(keyImage, GamePanel.TILE_SIZE /2, GamePanel.TILE_SIZE /2, GamePanel.TILE_SIZE, GamePanel.TILE_SIZE,null);
             g2.drawString("x" + gp.player.hasKey,70,60);
 
             //MESSAGE
-            if(messageOn  == true){
+            if(messageOn){
 
                 g2.setFont(g2.getFont().deriveFont(30F));
-                g2.drawString(message, gp.TILE_SIZE /2, gp.TILE_SIZE *5);
+                g2.drawString(message, GamePanel.TILE_SIZE /2, GamePanel.TILE_SIZE *5);
 
                 messageCounter++;
 
