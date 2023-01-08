@@ -13,7 +13,7 @@ public class QuestionWindow {
      * @param playerQuestion question to be displayed
      * @return true if user answered correctly
      */
-    public boolean showPlayerQuestion(JFrame component, Question playerQuestion) {
+    public static boolean showPlayerQuestion(JFrame component, Question playerQuestion) {
         return showQuestionDialog(component, PLAYER_QUESTION_HEADER, playerQuestion);
     }
 
@@ -23,16 +23,16 @@ public class QuestionWindow {
      * @param refereeQuestion question to be displayed
      * @return true if user answered correctly
      */
-    public boolean showRefereeQuestion(JFrame component, Question refereeQuestion) {
+    public static boolean showRefereeQuestion(JFrame component, Question refereeQuestion) {
         return showQuestionDialog(component, REFEREE_QUESTION_HEADER, refereeQuestion);
     }
 
 
-    private String[] getAnswersInRandomOrder(Question question){
+    private static String[] getAnswersInRandomOrder(Question question){
         if(Math.random() > 0.5) return new String[] {question.correctAnswer, question.incorrectAnswer};
         return new String[] {question.incorrectAnswer, question.correctAnswer};
     }
-    private boolean showQuestionDialog(JFrame component, String windowHeader, Question question) {
+    private static boolean showQuestionDialog(JFrame component, String windowHeader, Question question) {
         String[] options = getAnswersInRandomOrder(question);
 
         int chosenOption = JOptionPane.showOptionDialog(component,
