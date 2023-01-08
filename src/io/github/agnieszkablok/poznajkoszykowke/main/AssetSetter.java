@@ -1,8 +1,6 @@
 package io.github.agnieszkablok.poznajkoszykowke.main;
 
-import io.github.agnieszkablok.poznajkoszykowke.items.Chest;
-import io.github.agnieszkablok.poznajkoszykowke.items.Door;
-import io.github.agnieszkablok.poznajkoszykowke.items.Key;
+import io.github.agnieszkablok.poznajkoszykowke.items.*;
 
 public class AssetSetter {
 
@@ -12,40 +10,19 @@ public class AssetSetter {
 
         this.gp = gp;
     }
+
+    private void placeItem(int index, Item item, int x, int y){
+        gp.obj[index] = item;
+        gp.obj[index].worldX = x * gp.tileSize;
+        gp.obj[index].worldY = y * gp.tileSize;
+    }
     public void setObject(){
-        gp.obj[0] = new Key();
-        gp.obj[0].worldX = 23* gp.tileSize;
-        gp.obj[0].worldY = 7* gp.tileSize;
-
-        gp.obj[1] = new Key();
-        gp.obj[1].worldX = 23* gp.tileSize;
-        gp.obj[1].worldY = 40* gp.tileSize;
-
-        gp.obj[2] = new Door();
-        gp.obj[2].worldX = 10* gp.tileSize;
-        gp.obj[2].worldY = 11* gp.tileSize;
-
-        gp.obj[3] = new Door();
-        gp.obj[3].worldX = 12* gp.tileSize;
-        gp.obj[3].worldY =22* gp.tileSize;
-
-        gp.obj[4] = new Door();
-        gp.obj[4].worldX = 8* gp.tileSize;
-        gp.obj[4].worldY = 28* gp.tileSize;
-
-        gp.obj[5] = new Chest();
-        gp.obj[5].worldX = 10* gp.tileSize;
-        gp.obj[5].worldY = 7* gp.tileSize;
-
-        gp.obj[6] = new Key();
-        gp.obj[6].worldX = 38* gp.tileSize;
-        gp.obj[6].worldY = 8* gp.tileSize;
-
-
-
-
-
-
-
+        placeItem(0, new Whistle(), 23, 7);
+        placeItem(1, new Ball(), 23, 40);
+        placeItem(2, new Door(), 10, 11);
+        placeItem(3, new Door(), 12, 22);
+        placeItem(4, new Door(), 8, 28);
+        placeItem(5, new Chest(), 10, 7);
+        placeItem(6, new Ball(), 38, 8);
     }
 }
