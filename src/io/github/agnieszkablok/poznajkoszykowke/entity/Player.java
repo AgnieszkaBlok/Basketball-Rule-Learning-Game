@@ -1,6 +1,7 @@
 package io.github.agnieszkablok.poznajkoszykowke.entity;
 
 import io.github.agnieszkablok.poznajkoszykowke.items.*;
+import io.github.agnieszkablok.poznajkoszykowke.location.Direction;
 import io.github.agnieszkablok.poznajkoszykowke.main.GamePanel;
 import io.github.agnieszkablok.poznajkoszykowke.main.KeyHandler;
 import io.github.agnieszkablok.poznajkoszykowke.quiz.QuestionManager;
@@ -25,7 +26,7 @@ public class Player extends Entity {
 
     private QuestionManager questionManager;
 
-    private int heartsCnt;
+    private int heartCnt;
 
     public Player(GamePanel gp, KeyHandler keyH) {
         this.gp = gp;
@@ -39,7 +40,7 @@ public class Player extends Entity {
         solidArea.width = 32;
         solidArea.height = 32;
 
-        this.heartsCnt = INITIAL_HEART_CNT;
+        this.heartCnt = INITIAL_HEART_CNT;
 
         try{
             this.questionManager = new QuestionManager(PLAYER_QUESTIONS_DIRECTORY, REFEREE_QUESTIONS_DIRECTORY);
@@ -57,7 +58,7 @@ public class Player extends Entity {
         worldX = GamePanel.TILE_SIZE * 23;
         worldY = GamePanel.TILE_SIZE * 21;
         speed = INITIAL_SPEED;
-        direction = "down";
+        direction = Direction.DOWN;
     }
 
     public void getPlayerImage() {
@@ -82,16 +83,16 @@ public class Player extends Entity {
     public void update() {
         if (keyH.downPressed || keyH.upPressed || keyH.leftPressed || keyH.rightPressed) {
             if (keyH.upPressed) {
-                direction = "up";
+                direction = Direction.UP;
 
             } else if (keyH.downPressed) {
-                direction = "down";
+                direction = Direction.DOWN;
 
             } else if (keyH.leftPressed) {
-                direction = "left";
+                direction = Direction.LEFT;
 
             } else {
-                direction = "right";
+                direction = Direction.RIGHT;
 
             }
             //Check tile  colision
@@ -105,10 +106,10 @@ public class Player extends Entity {
             //if colision is false can move
             if (!collisionOn) {
                 switch (direction) {
-                    case "up" -> worldY -= speed;
-                    case "down" -> worldY += speed;
-                    case "left" -> worldX -= speed;
-                    case "right" -> worldX += speed;
+                    case UP -> worldY -= speed;
+                    case DOWN -> worldY += speed;
+                    case LEFT -> worldX -= speed;
+                    case RIGHT -> worldX += speed;
                 }
             }
 
@@ -132,7 +133,7 @@ public class Player extends Entity {
         if(response)
             hasKey++;
         else
-            heartsCnt--;
+            heartCnt--;
     }
 
     private void handlePlayerQuestion(){
@@ -177,7 +178,7 @@ public class Player extends Entity {
         BufferedImage image = null;
 
         switch (direction) {
-            case "up" -> {
+            case UP -> {
                 if (spriteNum == 1) {
                     image = up1;
                 }
@@ -185,7 +186,7 @@ public class Player extends Entity {
                     image = up2;
                 }
             }
-            case "down" -> {
+            case DOWN -> {
                 if (spriteNum == 1) {
                     image = down1;
                 }
@@ -193,7 +194,7 @@ public class Player extends Entity {
                     image = down2;
                 }
             }
-            case "left" -> {
+            case LEFT -> {
                 if (spriteNum == 1) {
                     image = left1;
                 }
@@ -201,7 +202,7 @@ public class Player extends Entity {
                     image = left2;
                 }
             }
-            case "right" -> {
+            case RIGHT -> {
                 if (spriteNum == 1) {
                     image = right1;
                 }

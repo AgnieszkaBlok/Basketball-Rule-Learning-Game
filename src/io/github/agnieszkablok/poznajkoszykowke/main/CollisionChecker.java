@@ -26,7 +26,7 @@ public class CollisionChecker {
         int tileNum1, tileNum2;
 
         switch (entity.direction) {
-            case "up" -> {
+            case UP -> {
                 entityTopRow = (entityTopWorldY - entity.speed) / GamePanel.TILE_SIZE;
                 tileNum1 = gp.tileM.mapTileNum[entityLeftCol][entityTopRow]; //lewy róg kwadratu
                 tileNum2 = gp.tileM.mapTileNum[entityRightCol][entityTopRow];  //prawy rog kwadratu
@@ -34,7 +34,7 @@ public class CollisionChecker {
                     entity.collisionOn = true;
                 }
             }
-            case "down" -> {
+            case DOWN -> {
                 entityBottomRow = (entityBottomWorldY + entity.speed) / GamePanel.TILE_SIZE;
                 tileNum1 = gp.tileM.mapTileNum[entityLeftCol][entityBottomRow]; //lewy róg kwadratu
                 tileNum2 = gp.tileM.mapTileNum[entityRightCol][entityBottomRow];  //prawy rog kwadratu
@@ -42,7 +42,7 @@ public class CollisionChecker {
                     entity.collisionOn = true;
                 }
             }
-            case "left" -> {
+            case LEFT -> {
                 entityLeftCol = (entityLeftWorldX - entity.speed) / GamePanel.TILE_SIZE;
                 tileNum1 = gp.tileM.mapTileNum[entityLeftCol][entityTopRow]; //lewy róg kwadratu
                 tileNum2 = gp.tileM.mapTileNum[entityLeftCol][entityBottomRow];  //prawy rog kwadratu
@@ -50,7 +50,7 @@ public class CollisionChecker {
                     entity.collisionOn = true;
                 }
             }
-            case "right" -> {
+            case RIGHT -> {
                 entityRightCol = (entityRightWorldX + entity.speed) / GamePanel.TILE_SIZE;
                 tileNum1 = gp.tileM.mapTileNum[entityRightCol][entityTopRow]; //lewy róg kwadratu
                 tileNum2 = gp.tileM.mapTileNum[entityRightCol][entityBottomRow];  //prawy rog kwadratu
@@ -76,8 +76,7 @@ public class CollisionChecker {
                 item.solidArea.y = item.worldY + item.solidArea.y;
 
                 switch (entity.direction) { //simulating entitys movment and check when it will be after it moved
-                    //ep 8 10:25
-                    case "up" -> {
+                    case UP -> {
                         entity.solidArea.y -= entity.speed;
                         if (entity.solidArea.intersects((item.solidArea))) {
                             if (item.collision) {
@@ -88,7 +87,7 @@ public class CollisionChecker {
                             }
                         }
                     }
-                    case "down" -> {
+                    case DOWN -> {
                         entity.solidArea.y += entity.speed;
                         if (entity.solidArea.intersects((item.solidArea))) {
                             if (item.collision) {
@@ -100,7 +99,7 @@ public class CollisionChecker {
 
                         }
                     }
-                    case "left" -> {
+                    case LEFT -> {
                         entity.solidArea.x -= entity.speed;
                         if (entity.solidArea.intersects((item.solidArea))) {
                             if (item.collision) {
@@ -111,7 +110,7 @@ public class CollisionChecker {
                             }
                         }
                     }
-                    case "right" -> {
+                    case RIGHT -> {
                         entity.solidArea.x += entity.speed;
                         if (entity.solidArea.intersects((item.solidArea))) {
                             if (item.collision) {
