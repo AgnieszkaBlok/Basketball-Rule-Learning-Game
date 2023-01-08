@@ -2,18 +2,23 @@ package io.github.agnieszkablok.poznajkoszykowke.main;
 
 import io.github.agnieszkablok.poznajkoszykowke.objects.ObjKey;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class Ui {
     GamePanel gp;
     Graphics2D g2;
-    Font arial_40, arialb_40,arialb_80,title_60;
+    Font arial_40, arialb_40,arialb_80,title_60,menu_40;
     BufferedImage keyImage;
     public boolean messageOn = false;
     public String message = "";
     int messageCounter = 0;
     public boolean gameFinished = false;
+    private BufferedImage image;
 
 
     public Ui (GamePanel gp){
@@ -22,6 +27,7 @@ public class Ui {
         arialb_40 = new Font("Arial",Font.BOLD,40);
         arialb_80 = new Font("Arial",Font.BOLD,80);
         title_60 = new Font("Century",Font.BOLD,60);
+        menu_40 = new Font("Century",Font.BOLD,40);
         ObjKey key = new ObjKey();
        keyImage = key.image;
 
@@ -31,7 +37,7 @@ public class Ui {
         message = text;
         messageOn = true;
     }
-    public void draw (Graphics2D g2) {
+    public void draw (Graphics2D g2) throws IOException {
         this.g2 = g2;
 
         //Title state
@@ -90,13 +96,13 @@ public class Ui {
         }
     }
 
-    public void drawTitleScreen(){
+    public void drawTitleScreen() throws IOException {
         //Title name
         g2.setColor(new Color(98,157,90));
         g2.fillRect(0,0,gp.screenWidth,gp.screenHeight);
         g2.setFont(title_60);
         String text = "Poznaj koszykówkę";
-        int x = gp.screenWidth/10;
+        int x = gp.screenWidth/10 + 40;
         int y = gp.tileSize*3;
         //Shadow
         g2.setColor(Color.black);
@@ -105,8 +111,18 @@ public class Ui {
         g2.setColor(Color.WHITE);
         g2.drawString(text,x,y);
         //Player image
-        x = gp.screenWidth/2;
+        x = gp.screenWidth/2 -70;
         y += gp.tileSize*2;
+       image = ImageIO.read(new FileInputStream("res/player/boy_down_1.png"));
+       g2.drawImage(image,x,y,gp.tileSize*2,gp.tileSize*2,null);
+        //Menu
+        g2.setFont(menu_40);
+
+        text = "Nowa gra";
+        x = gp.screenWidth/20 - 70;
+
+        g2.drawString(text,x,y);
+
 
 
     }

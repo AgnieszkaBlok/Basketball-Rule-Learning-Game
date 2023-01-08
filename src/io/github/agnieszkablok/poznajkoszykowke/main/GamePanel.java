@@ -6,6 +6,7 @@ import io.github.agnieszkablok.poznajkoszykowke.tile.TileManager;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 public class GamePanel extends JPanel implements  Runnable{
 
@@ -103,7 +104,11 @@ public class GamePanel extends JPanel implements  Runnable{
 
       //Title screen
         if(gameState == titleState){
-            ui.draw(g2);
+            try {
+                ui.draw(g2);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
 
 
         }
@@ -122,7 +127,11 @@ public class GamePanel extends JPanel implements  Runnable{
             player.draw(g2);
 
             // UI
-            ui.draw(g2);
+            try {
+                ui.draw(g2);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
 
         }
 
