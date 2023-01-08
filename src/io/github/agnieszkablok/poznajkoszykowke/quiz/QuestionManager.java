@@ -42,7 +42,7 @@ public class QuestionManager {
                 .map(File::getName)
                 .map(file -> {
                     try{
-                        return new Question(file);
+                        return new Question(directory + "/" + file);
                     } catch (IOException e) {
                         return null;
                     }

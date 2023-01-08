@@ -35,4 +35,14 @@ public class Question {
         incorrectAnswer = reader.readLine();
         reader.close();
     }
+
+
+    @Override
+    public String toString() {
+        return "Question{" +
+                "questionBody='" + questionBody + '\'' +
+                ", correctAnswer='" + correctAnswer + '\'' +
+                ", incorrectAnswer='" + incorrectAnswer + '\'' +
+                '}';
+    }
 }
