@@ -18,7 +18,7 @@ public class TileManager {
         tile = new Tile[10];//liczba naszych rodzajow bloczkow
         mapTileNum = new int[GamePanel.MAX_WORLD_COL][GamePanel.MAX_WORLD_ROW];
         getTileImage();
-        loadMap("res/maps/world01.txt");
+        loadMap("res/maps/world4.txt");
     }
 
     private Tile readTile(String path, boolean collision) throws IOException{
@@ -34,8 +34,8 @@ public class TileManager {
             tile[1] = readTile("res/tiles/wall.png", true);
             tile[2] = readTile("res/tiles/water.png", true);
             tile[3] = readTile("res/tiles/earth.png", false);
-            tile[4] = readTile("res/tiles/tree.png", true);
-            tile[5] = readTile("res/tiles/sand.png", false);
+            tile[4] = readTile("res/tiles/basket.png", true);
+            tile[5] = readTile("res/tiles/court.png", false);
         } catch(FileNotFoundException e){
             System.out.println("Couldn't load some of the tiles image!");
         }

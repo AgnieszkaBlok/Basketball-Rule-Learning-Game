@@ -130,10 +130,15 @@ public class Player extends Entity {
     }
 
     private void handleResponseToQuestion(boolean response){
-        if(response)
+        if(response){
             hasKey++;
-        else
+            gp.ui.showMessage("Zdobyłeś klucz");
+        }
+        else {
             heartCnt--;
+            gp.ui.showMessage("Zła odpowiedź");
+        }
+
     }
 
     private void handlePlayerQuestion(){
@@ -155,7 +160,7 @@ public class Player extends Entity {
             gp.ui.gameFinished = true;
         } else if (item instanceof Door) {
             if (hasKey == 0) {
-                gp.ui.showMessage("You need a key");
+                gp.ui.showMessage("Potrzebujesz klucza");
                 return;
             }
             hasKey--;
@@ -163,7 +168,7 @@ public class Player extends Entity {
         } else if (item instanceof Key) {
             hasKey++;
             gp.deleteItemAt(i);
-            System.out.println("Key" + hasKey);
+
         } else if (item instanceof Ball) {
             handlePlayerQuestion();
             gp.deleteItemAt(i);
