@@ -1,20 +1,17 @@
-package Objects;
+package io.github.agnieszkablok.poznajkoszykowke.items;
 
 import javax.imageio.ImageIO;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-public class ObjChest extends SuperObjects{
+public class Chest extends Item {
 
-    public ObjChest (){
-
-        name = "Chest";
+    public Chest(int x, int y){
+        super(x, y);
         try {
             image = ImageIO.read(new FileInputStream("res/objects/chest.png"));
-
-
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Couldn't read the chest image!");
         }
     }
 }

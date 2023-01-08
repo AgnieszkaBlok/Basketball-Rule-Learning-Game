@@ -1,4 +1,4 @@
-package Main;
+package io.github.agnieszkablok.poznajkoszykowke.main;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -9,6 +9,13 @@ import java.awt.event.KeyListener;
     @Override
     public void keyTyped(KeyEvent e) {
 
+    }
+
+    public void clearPressedButtons(){
+        upPressed = false;
+        downPressed = false;
+        leftPressed = false;
+        rightPressed = false;
     }
 
     @Override

@@ -1,4 +1,4 @@
-package tile;
+package io.github.agnieszkablok.poznajkoszykowke.tile;
 
 import java.awt.image.BufferedImage;
 

@@ -1,4 +1,4 @@
-package Main;
+package io.github.agnieszkablok.poznajkoszykowke.main;
 
 import javax.swing.*;
 
