@@ -31,5 +31,9 @@ public class Item {
 
     }
 
+    public enum Type{
+        CHEST, DOOR, KEY,
+    }
+
 
 }

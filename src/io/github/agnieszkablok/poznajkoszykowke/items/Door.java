@@ -4,10 +4,10 @@ import javax.imageio.ImageIO;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-public class ObjDoor extends Item {
+public class Door extends Item {
 
 
-        public ObjDoor() {
+        public Door() {
 
             name = "Door";
             try {

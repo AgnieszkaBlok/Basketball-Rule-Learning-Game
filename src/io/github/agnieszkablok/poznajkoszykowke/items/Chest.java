@@ -4,9 +4,9 @@ import javax.imageio.ImageIO;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-public class ObjChest extends Item {
+public class Chest extends Item {
 
-    public ObjChest (){
+    public Chest(){
 
         name = "Chest";
         try {

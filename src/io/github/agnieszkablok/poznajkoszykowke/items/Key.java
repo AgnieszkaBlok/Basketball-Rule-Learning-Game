@@ -4,9 +4,9 @@ import javax.imageio.ImageIO;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-public class ObjKey extends Item {
+public class Key extends Item {
 
-    public ObjKey(){
+    public Key(){
 
         name ="Key";
         try{

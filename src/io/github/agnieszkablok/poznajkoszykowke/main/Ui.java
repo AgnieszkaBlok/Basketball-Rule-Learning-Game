@@ -1,6 +1,6 @@
 package io.github.agnieszkablok.poznajkoszykowke.main;
 
-import io.github.agnieszkablok.poznajkoszykowke.items.ObjKey;
+import io.github.agnieszkablok.poznajkoszykowke.items.Key;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -20,7 +20,7 @@ public class Ui {
         arial_40 = new Font("Arial",Font.PLAIN,40);
         arialb_40 = new Font("Arial",Font.BOLD,40);
         arialb_80 = new Font("Arial",Font.BOLD,80);
-        ObjKey key = new ObjKey();
+        Key key = new Key();
        keyImage = key.image;
 
     }
