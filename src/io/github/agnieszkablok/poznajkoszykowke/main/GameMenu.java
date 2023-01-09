@@ -39,7 +39,11 @@ public class GameMenu {
     }
 
     private static void handleAboutGameButtonPress(ActionEvent e){
-        JOptionPane.showMessageDialog(menuWindow, "Eggs are not supposed to be green.\n Lorem ipsum");
+        JOptionPane.showMessageDialog(menuWindow, "  Gra polega na dotarciu do skrzyni ze skarbem gdzie znajdują się zaginone fragmenty przepisów do koszykówki\n " +
+                " Jednak na przeszkodzie do skarbu stoją Ci bramy. Żeby je otworzyć musisz zebrać klucze.\n" +
+                " Czasami leżą one na Twojej drodze, a czasami dopiero po poprawnej odpowiedzi na pytanie,\n ukryte pod piłką do koszykówki lub gwizdkiem, możesz je otrzymać.\n" +
+                "                                                                                 Powodzenia" +
+                "\n");
     }
 
 
