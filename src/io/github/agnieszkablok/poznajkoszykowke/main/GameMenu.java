@@ -1,8 +1,11 @@
 package io.github.agnieszkablok.poznajkoszykowke.main;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.io.File;
+import java.io.IOException;
 
 public class GameMenu {
     private static JFrame menuWindow;
@@ -49,32 +52,38 @@ public class GameMenu {
 
     public static void showGameMenu(){
         menuWindow = new JFrame("Poznaj koszykówkę");
+        try {
+            menuWindow.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("res/player/boy_down_1.png")))));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        menuWindow.setBackground(Color.yellow);
 
         JLabel gameTitle = new JLabel("Poznaj koszykówkę");
-        gameTitle.setFont(new Font("Bahnschrift", Font.BOLD, 23));
-        gameTitle.setBounds(50, 50, 300, 50);
+        gameTitle.setFont(new Font("Arial", Font.BOLD, 23));
+        gameTitle.setBounds(150, 50, 300, 80);
         gameTitle.setHorizontalAlignment(SwingConstants.CENTER);
         menuWindow.add(gameTitle);
 
         JButton newGameButton = new JButton("Nowa gra");
         gameTitle.setFont(new Font("Bahnschrift", Font. PLAIN, 23));
-        newGameButton.setBounds(100,125,200,50);
+        newGameButton.setBounds(200,150,200,50);
         menuWindow.add(newGameButton);
         newGameButton.addActionListener(GameMenu::handleNewGameButtonPress);
 
         JButton aboutGameButton = new JButton("O grze");
         gameTitle.setFont(new Font("Bahnschrift", Font.PLAIN, 23));
-        aboutGameButton.setBounds(100, 200, 200, 50);
+        aboutGameButton.setBounds(200, 225, 200, 50);
         menuWindow.add(aboutGameButton);
         aboutGameButton.addActionListener(GameMenu::handleAboutGameButtonPress);
 
         JButton exitButton = new JButton("Wyjście");
         gameTitle.setFont(new Font("Bahnschrift", Font.PLAIN, 23));
-        exitButton.setBounds(100, 275, 200, 50);
+        exitButton.setBounds(200, 300, 200, 50);
         menuWindow.add(exitButton);
         exitButton.addActionListener(GameMenu::handleExitButtonPress);
 
-        menuWindow.setSize(400,400);
+        menuWindow.setSize(600,500);
         menuWindow.setResizable(false);
         menuWindow.setLayout(null);
         menuWindow.setVisible(true);
