@@ -30,8 +30,7 @@ public class GamePanel extends JPanel implements  Runnable{
     public static final int FPS =60;
 
     public static final double DRAW_INTERVAL = 1000000000.0 / FPS;
-
-
+    public int tileSize;
 
 
     TileManager tileM = new TileManager(this);

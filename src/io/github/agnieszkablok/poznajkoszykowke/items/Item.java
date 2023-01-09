@@ -14,7 +14,7 @@ public class Item {
     public int solidAreaDefaultX =0;
     public int getSolidAreaDefaultY = 0;
 
-    Item(int x, int y){
+    public Item(int x, int y){
 
         this.worldX = x * GamePanel.TILE_SIZE;
         this.worldY = y * GamePanel.TILE_SIZE;
