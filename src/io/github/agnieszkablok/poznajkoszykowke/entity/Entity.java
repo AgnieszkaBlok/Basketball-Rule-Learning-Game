@@ -5,6 +5,10 @@ import io.github.agnieszkablok.poznajkoszykowke.location.Direction;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
+/**
+ * A class that loads entity
+ */
+
 //pleyer,monter,npc classes
 public class Entity {
 

@@ -5,6 +5,10 @@ import io.github.agnieszkablok.poznajkoszykowke.items.Key;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
+/**
+ * A class that draws messages on the screen
+ */
+
 public class Ui {
     GamePanel gp;
     Font arial_40, arialb_40,arialb_80;

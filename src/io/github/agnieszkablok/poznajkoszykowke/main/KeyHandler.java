@@ -4,6 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+
+/**
+ * Implementation of KeyListener that listens for keyboard presses and releases (W, S, A, D for moving & Esc button for exiting to main menu)
+ */
  public class KeyHandler implements KeyListener {
 
     public boolean upPressed, downPressed, leftPressed, rightPressed;
@@ -22,7 +26,7 @@ import java.awt.event.KeyListener;
 
     @Override
     public void keyPressed(KeyEvent e) {
-        int code = e.getKeyCode(); //zwraca numer klawisza, ktory byl wcisniety
+        int code = e.getKeyCode();
 
         if(code == KeyEvent.VK_ESCAPE){
             Component component = e.getComponent();

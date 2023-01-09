@@ -6,6 +6,9 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.*;
 
+/**
+ * A class that manages adding tiles
+ */
 public class TileManager {
 
     GamePanel gp;
@@ -15,7 +18,7 @@ public class TileManager {
 
     public TileManager(GamePanel gp){
         this.gp = gp;
-        tile = new Tile[10];//liczba naszych rodzajow bloczkow
+        tile = new Tile[10];
         mapTileNum = new int[GamePanel.MAX_WORLD_COL][GamePanel.MAX_WORLD_ROW];
         getTileImage();
         loadMap("res/maps/world4.txt");
@@ -86,13 +89,13 @@ public class TileManager {
         while(worldCol < GamePanel.MAX_WORLD_COL && worldRow < GamePanel.MAX_WORLD_ROW){
 
             int tileNum = mapTileNum [worldCol] [worldRow];
-            /// epizot 5 15:30 tlumaczy
+
             int worldX = worldCol * GamePanel.TILE_SIZE;
             int worldY = worldRow * GamePanel.TILE_SIZE;
             int screenX = worldX - gp.player.worldX + gp.player.screenX;
             int screenY = worldY - gp.player.worldY + gp.player.screenY;
 
-            if(worldX + GamePanel.TILE_SIZE > gp.player.worldX - gp.player.screenX &&  // zeby wyswietlaly sie tylko te z najblizszego otoczenia a nie cala mapa
+            if(worldX + GamePanel.TILE_SIZE > gp.player.worldX - gp.player.screenX &&
                     worldX - GamePanel.TILE_SIZE < gp.player.worldX + gp.player.screenX &&
                     worldY + GamePanel.TILE_SIZE >gp.player.worldY -gp.player.screenY &&
                     worldY - GamePanel.TILE_SIZE < gp.player.worldY + gp.player.screenY) {

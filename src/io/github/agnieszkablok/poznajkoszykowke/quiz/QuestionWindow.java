@@ -3,6 +3,9 @@ package io.github.agnieszkablok.poznajkoszykowke.quiz;
 import javax.swing.*;
 import java.awt.Component;
 
+/**
+ * A class that represents a window with a question.
+ */
 public class QuestionWindow {
 
     private static final String PLAYER_QUESTION_HEADER = "Pytanie o koszykówce";

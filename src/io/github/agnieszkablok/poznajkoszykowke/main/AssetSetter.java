@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+/**
+ * A class that takes care of placing items
+ */
 public class AssetSetter {
 
     private static Item placeItemFromLine(String line){

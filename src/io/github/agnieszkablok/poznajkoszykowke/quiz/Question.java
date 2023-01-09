@@ -4,6 +4,9 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
+/**
+ *  A class representing a question. Reads a question from .question file
+ */
 public class Question {
 
     String questionBody;
@@ -28,6 +31,11 @@ public class Question {
     }
 
 
+    /**
+     * Read a question from .question file
+     * @param filepath filepath to file
+     * @throws IOException if I/O problems are encountered while reading file
+     */
     public Question(String filepath) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(filepath));
         questionBody = reader.readLine();

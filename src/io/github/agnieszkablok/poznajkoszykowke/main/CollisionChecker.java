@@ -3,6 +3,9 @@ package io.github.agnieszkablok.poznajkoszykowke.main;
 import io.github.agnieszkablok.poznajkoszykowke.entity.Entity;
 import io.github.agnieszkablok.poznajkoszykowke.items.Item;
 
+/**
+ * A class that detects collisions
+ */
 public class CollisionChecker {
     GamePanel gp;
 
@@ -11,8 +14,7 @@ public class CollisionChecker {
         this.gp = gp;
     }
 
-    public void checkTile( Entity entity){ // wszystkie kolizje bloki, potowry
-      // wymiary tego kwadratu na mapie
+    public void checkTile( Entity entity){
         int entityLeftWorldX = entity.worldX + entity.solidArea.x;// +8
         int entityRightWorldX = entity.worldX +entity.solidArea.x + entity.solidArea.width;
         int entityTopWorldY = entity.worldY + entity.solidArea.y;

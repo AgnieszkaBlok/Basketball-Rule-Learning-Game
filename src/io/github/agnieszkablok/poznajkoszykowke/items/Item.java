@@ -5,6 +5,9 @@ import io.github.agnieszkablok.poznajkoszykowke.main.GamePanel;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
+/**
+ * A class that is managing items
+ */
 public class Item {
 
     public BufferedImage image;

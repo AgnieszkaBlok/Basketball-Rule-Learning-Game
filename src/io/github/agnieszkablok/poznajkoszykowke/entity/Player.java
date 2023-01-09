@@ -13,6 +13,10 @@ import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
 import java.io.IOException;
 
+/**
+ * A class that manages player
+ */
+
 public class Player extends Entity {
     private static final String PLAYER_QUESTIONS_DIRECTORY = "res/questions/player";
     private static final String REFEREE_QUESTIONS_DIRECTORY = "res/questions/referee";

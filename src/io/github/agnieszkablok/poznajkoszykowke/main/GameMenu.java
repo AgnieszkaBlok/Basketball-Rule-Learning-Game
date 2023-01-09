@@ -7,8 +7,15 @@ import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * A class that loads and shows game menu
+ */
 public class GameMenu {
     private static JFrame menuWindow;
+    private static final String ABOUT_GAME = "  Gra polega na dotarciu do skrzyni ze skarbem gdzie znajdują się zaginone fragmenty przepisów do koszykówki\n " +
+            " Jednak na przeszkodzie do skarbu stoją Ci bramy. Żeby je otworzyć musisz zebrać klucze.\n" +
+            " Czasami leżą one na Twojej drodze, a czasami dopiero po poprawnej odpowiedzi na pytanie,\n ukryte pod piłką do koszykówki lub gwizdkiem, możesz je otrzymać.\n" +
+            "                                                                                 Powodzenia";
 
     private static void startNewGame(){
         JFrame gameWindow = new JFrame();
@@ -42,14 +49,12 @@ public class GameMenu {
     }
 
     private static void handleAboutGameButtonPress(ActionEvent e){
-        JOptionPane.showMessageDialog(menuWindow, "  Gra polega na dotarciu do skrzyni ze skarbem gdzie znajdują się zaginone fragmenty przepisów do koszykówki\n " +
-                " Jednak na przeszkodzie do skarbu stoją Ci bramy. Żeby je otworzyć musisz zebrać klucze.\n" +
-                " Czasami leżą one na Twojej drodze, a czasami dopiero po poprawnej odpowiedzi na pytanie,\n ukryte pod piłką do koszykówki lub gwizdkiem, możesz je otrzymać.\n" +
-                "                                                                                 Powodzenia" +
-                "\n");
+        JOptionPane.showMessageDialog(menuWindow, ABOUT_GAME);
     }
 
-
+    /**
+     * show menu buttons and styling menu site
+     */
     public static void showGameMenu(){
         menuWindow = new JFrame("Poznaj koszykówkę");
         try {
@@ -89,18 +94,4 @@ public class GameMenu {
         menuWindow.setVisible(true);
     }
 
-    /*public static boolean showGameMenu(Component component) {
-        String[] options = {"Nowa gra", "Wyjście"};
-        int chosenOption = JOptionPane.showOptionDialog(component,
-                "Poznaj koszykówkę",
-                "Poznaj koszykówkę",
-                JOptionPane.YES_NO_OPTION,
-                JOptionPane.QUESTION_MESSAGE,
-                null,
-                options,
-                null);
-
-        return chosenOption == 0;
-
-    }*/
 }

@@ -10,17 +10,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.io.FileNotFoundException;
 
+/**
+ * A class that represents game panel (main game window)
+ */
 public class GamePanel extends JPanel implements  Runnable{
 
     // Screen Settings
-    static final int ORIGINAL_TILE_SIZE = 16; //16x16 tile
+    static final int ORIGINAL_TILE_SIZE = 16;
     static final int SCALE = 3;
 
     public static final int TILE_SIZE = ORIGINAL_TILE_SIZE * SCALE; //48x48
-    public static final int MAX_SCREEN_COL =16;  //kolumny
-    public static final int MAX_SCREEN_ROW =12; //wiersze
-    public static final int SCREEN_WIDTH = TILE_SIZE * MAX_SCREEN_COL; //768
-    public static final int SCREEN_HEIGHT = TILE_SIZE * MAX_SCREEN_ROW; //576
+    public static final int MAX_SCREEN_COL =16;
+    public static final int MAX_SCREEN_ROW =12;
+    public static final int SCREEN_WIDTH = TILE_SIZE * MAX_SCREEN_COL;
+    public static final int SCREEN_HEIGHT = TILE_SIZE * MAX_SCREEN_ROW;
 
     // WORLD SETTINGS
     public static final int MAX_WORLD_COL = 50;
@@ -37,7 +40,7 @@ public class GamePanel extends JPanel implements  Runnable{
 
     KeyHandler keyH =new KeyHandler();
     public Ui ui = new Ui(this);
-    Thread gameThread; //program zaczyna dopoki nie zatrzymama
+    Thread gameThread;
 
     public CollisionChecker cChecker = new CollisionChecker(this);
 
@@ -60,9 +63,9 @@ public class GamePanel extends JPanel implements  Runnable{
 
 
     public GamePanel() {
-        this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT)); //panel size of the game panel
+        this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
         this.setBackground(Color.black);
-        this.setDoubleBuffered(true);// better rendering
+        this.setDoubleBuffered(true);
         this.addKeyListener(keyH);
         items = new ArrayList<>();
         this.setFocusable(true);
@@ -78,7 +81,7 @@ public class GamePanel extends JPanel implements  Runnable{
 
     public void startGameThread(){
         gameThread = new Thread(this);
-        gameThread.start();//wywolujw metode run
+        gameThread.start();
     }
 
     @Override
@@ -108,7 +111,7 @@ public class GamePanel extends JPanel implements  Runnable{
         player.update();
 
     }
-    public void paintComponent(Graphics g){ //standard method to draw on jpanel
+    public void paintComponent(Graphics g){
         super.paintComponent(g);
 
         Graphics2D g2 = (Graphics2D) g;
@@ -128,7 +131,7 @@ public class GamePanel extends JPanel implements  Runnable{
         // UI
         ui.draw(g2);
 
-        g2.dispose();//??? 8.05 film 2
+        g2.dispose();
 
 
 

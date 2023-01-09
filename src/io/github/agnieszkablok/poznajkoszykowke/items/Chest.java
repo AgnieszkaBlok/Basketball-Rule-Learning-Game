@@ -4,8 +4,17 @@ import javax.imageio.ImageIO;
 import java.io.FileInputStream;
 import java.io.IOException;
 
+/**
+ * A class that loading chest
+ */
+
 public class Chest extends Item {
 
+    /**
+     * Loads the chest in the given coordinates
+     * @param x x coordinate
+     * @param y y coordinate
+     */
     public Chest(int x, int y){
         super(x, y);
         try {
